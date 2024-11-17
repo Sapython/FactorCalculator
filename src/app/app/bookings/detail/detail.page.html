@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Booking Detail</h2>
+  <ion-list>
+    <!-- {
+            id:'1',
+            date:Timestamp.now(),
+            persons:[
+              {
+                name:'John Doe',
+                type:'adult',
+                age:25,
+                gender:'male',
+              },
+              {
+                name:'John Doe',
+                type:'adult',
+                age:25,
+                gender:'male',
+              },
+              {
+                name:'John Doe',
+                type:'child',
+                age:25,
+                gender:'male',
+              }
+            ],
+            room:{
+              id:'1',
+              image:'',
+              name:'Single Room',
+              price:1000,
+              description:'A single room',
+              type:'single'
+            },
+            details:{
+              name:'John Doe',
+              phone:'1234567890',
+              email:'',
+              address:''
+            },
+            checkInDate:Timestamp.now(),
+            checkOutDate:Timestamp.now(),
+            billing:{
+              subTotal:1000,
+              tax:18,
+              grandTotal:1180
+            }
+          }, -->
+    <ion-item>
+      <ion-label>Id</ion-label>
+      <ion-label>{{booking.id}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Check In Date</ion-label>
+      <ion-label>{{booking.checkInDate.toDate() | date}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Check Out Date</ion-label>
+      <ion-label>{{booking.checkOutDate.toDate() | date}}</ion-label>
+    </ion-item>
+    <h2>Room</h2>
+    <ion-item>
+      <ion-label>Room</ion-label>
+      <ion-label>{{booking.room.name}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Price</ion-label>
+      <ion-label>{{booking.room.price}}</ion-label>
+    </ion-item>
+    <hr>
+    <h2>Persons</h2>
+    <ion-item>
+      <ion-label>Persons</ion-label>
+      <ion-label>{{booking.persons.length}}</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let item of booking.persons">
+      <ion-label>{{item.name | titlecase}}</ion-label>
+      <ion-chip>{{item.gender | titlecase}}</ion-chip>
+      <ion-chip color="success">{{item.age}}</ion-chip>
+      <ion-chip color="danger">{{item.type}}</ion-chip>
+    </ion-item>
+    <hr>
+    <h2>Billing</h2>
+    <ion-item>
+      <ion-label>Sub Total</ion-label>
+      <ion-label>{{booking.billing.subTotal}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tax</ion-label>
+      <ion-label>{{booking.billing.tax}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Grand Total</ion-label>
+      <ion-label>{{booking.billing.grandTotal}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

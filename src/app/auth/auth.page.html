@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{mode | titlecase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list *ngIf="mode=='login'">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-col slot="start">
+          <ion-button
+            color="primary"
+            type="submit"
+            expand="block"
+            shape="round"
+          >
+            Submit
+          </ion-button>
+          <ion-button
+            (click)="mode='signup'"
+            color="tertiary"
+            expand="block"
+            fill="clear"
+            shape="round"
+          >
+            Sign Up
+          </ion-button>
+        </ion-col>
+      </form>
+    </ion-list>
+    <ion-list *ngIf="mode=='signup'">
+      <form [formGroup]="loginForm" (ngSubmit)="signup()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-col slot="start">
+          <ion-button
+            color="primary"
+            type="submit"
+            expand="block"
+            shape="round"
+          >
+            Signup
+          </ion-button>
+          <ion-button
+            (click)="mode='login'"
+            color="tertiary"
+            expand="block"
+            fill="clear"
+            shape="round"
+          >
+            Login
+          </ion-button>
+        </ion-col>
+      </form>
+    </ion-list>
+    <ion-list *ngIf="mode=='loading'">
+      <ion-item class="ion-justify-content-between">
+        <ion-spinner color="primary" name="crescent"></ion-spinner>
+        <ion-label>&nbsp; &nbsp; &nbsp; Loading Login Details</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

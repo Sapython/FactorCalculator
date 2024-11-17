@@ -1,0 +1,43 @@
+.top{
+    margin-top: 20px;
+    .progress{
+        display: block;
+        position: relative;
+        left:50%;
+        transform: translateX(-50%);
+    }
+    .progress ::ng-deep path{
+        stroke: var(--ion-color-primary) !important;
+    }
+    p{
+        transform: translateY(-200%);
+        font-size: 30px;
+        font-weight: bold;
+        color: var(--ion-color-primary);
+        // text-shadow: 0 0 10px var(--ion-color-primary);
+        text-align: center;
+    }
+}
+ion-card-content{
+    ion-icon{
+        font-size: 25px;
+        color: var(--ion-color-primary);
+        transform: translateY(30%);
+    }
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.customButton{
+    margin-top: 20px;
+    background-color: var(--ion-color-primary);
+    border-radius: 7px;
+    a{
+        padding: 0px 30px;
+        border: none;
+        color: white;
+        text-transform: none;
+    }
+}

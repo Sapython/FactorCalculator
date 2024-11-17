@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="top" *ngIf="readings.length > 0">
+    <round-progress class="progress" [current]="this.readings[0]?.powerFactor" [semicircle]="true" [rounded]="true"
+      [max]="max">
+    </round-progress>
+    <p>{{this.readings[0]?.powerFactor || 0}}</p>
+  </div>
+  <ion-card *ngIf="readings.length == 0">
+    <ion-card-header>
+      <ion-card-subtitle>Refreshed now</ion-card-subtitle>
+      <ion-card-title>No Readings found</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Please add a reading by pressing the <ion-icon name="add" color="primary"></ion-icon>blue button below
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="readings.length == 0">
+    <ion-card-header>
+      <ion-card-subtitle>About App</ion-card-subtitle>
+      <ion-card-title>Power Factor calculator</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      This is an app made by Shreeva Soft-Tech Innovations to calculate the Power Factor for a infrastructure.
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let reading of readings">
+    <ion-card-header>
+      <ion-card-subtitle>{{reading.dateId}}</ion-card-subtitle>
+      <ion-card-title>Power Factor: {{reading.powerFactor}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-chip color="primary" mode="ios" outline="true">
+        <ion-label>Kilo Watt Hour:&nbsp;&nbsp;</ion-label>
+        <ion-label>{{reading.kiloWattHours}}</ion-label>
+      </ion-chip>
+      <ion-chip color="primary" mode="ios" outline="true">
+        <ion-label>Kilo Volt Amp Hour:&nbsp;&nbsp;</ion-label>
+        <ion-label>{{reading.kiloVoltAmpHour}}</ion-label>
+      </ion-chip>
+      <div class="row">
+        <div uk-lightbox class="customButton" *ngIf="reading.kiloWattHoursImage">
+          <a class="uk-button uk-button-default" [href]="reading.kiloWattHoursImage"
+            data-caption="Kilo Watt Hour" data-type="image" data-attrs="width: 1280; height: 720;">KWh Image</a>
+        </div>
+        <div uk-lightbox class="customButton" *ngIf="reading.kiloVoltAmpHourImage">
+          <a class="uk-button uk-button-default" [href]="reading.kiloVoltAmpHourImage"
+            data-caption="Kilo Volt Amp Hour" data-type="image" data-attrs="width: 1280; height: 720;">KVAh Image</a>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "factorcalculator": {
+      "hosting": {
+        "app": [
+          "factorcalculator"
+        ]
+      }
+    },
+    "swasti-efdf8": {
+      "hosting": {
+        "app": [
+          "swasti-admin"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "swasti-efdf8"
+  }
+}

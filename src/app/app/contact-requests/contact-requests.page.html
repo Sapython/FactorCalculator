@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Contact Requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item routerLink="detail/{{request.id}}" detail button *ngFor="let request of databaseService.contactRequests">
+      <ion-label>{{request.firstName}}+{{request.lastName}}</ion-label>
+      <ion-chip color="primary" mode="ios" outline="true">
+        <ion-label>{{request.phone}}</ion-label>
+      </ion-chip>
+    </ion-item>
+  </ion-list>
+</ion-content>

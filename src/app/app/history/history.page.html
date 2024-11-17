@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>History</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Retreat Bookings </h2>
+  <ion-list>
+    <ion-item *ngFor="let item of bookings">
+      <ion-label>
+        <h3>{{item.billing.grandTotal}}</h3>
+        <p>{{item.checkInDate.toDate() | date}} - {{item.checkOutDate.toDate() | date}}</p>
+      </ion-label>
+      <ion-chip color="primary" mode="ios" outline="true">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label>{{item.persons.length}}</ion-label>
+      </ion-chip>
+    </ion-item>
+  </ion-list>
+</ion-content>
